@@ -18,6 +18,10 @@ export const Section = styled.section`
 
 export const Form = styled.form`
   margin-top: 100px;
+
+  a {
+    color: ${props => props.theme.colors.text};
+  }
 `;
 
 export const FormHeader = styled.h1`

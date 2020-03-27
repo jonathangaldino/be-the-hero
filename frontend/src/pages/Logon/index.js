@@ -1,19 +1,25 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { FiLogIn } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
+import { ThemeContext } from "styled-components";
 
 import { Container, Section, Form, FormHeader } from "./styles";
 
 import heroisImg from "../../assets/heroes.png";
 import logoImg from "../../assets/logo.svg";
+import logoLightImg from "../../assets/logoLight.svg";
+import logoDarkImg from "../../assets/logoDark.svg";
 
 import api from "../../services/api";
 
 function Logon() {
   const [id, setId] = useState("");
   const inputId = useRef(null);
+  const { colors, title } = useContext(ThemeContext);
 
   const history = useHistory();
+
+  const whichLogo = title === "light" ? logoLightImg : logoDarkImg;
 
   async function handleLogon(e) {
     e.preventDefault();
@@ -35,7 +41,7 @@ function Logon() {
   return (
     <Container>
       <Section>
-        <img src={logoImg} alt="Be The Hero" />
+        <img src={whichLogo} alt="Be The Hero" />
 
         <Form onSubmit={handleLogon}>
           <FormHeader>Faça seu logon</FormHeader>
