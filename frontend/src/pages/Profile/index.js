@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FiPower } from "react-icons/fi";
 import { ThemeContext } from "styled-components";
 import { shade } from "polished";
@@ -18,14 +18,44 @@ import {
 import logoImg from "../../assets/logo.svg";
 import Incident from "../../components/Incident";
 
+import api from "../../services/api";
+
 export default function Profile({ toggleTheme }) {
   const { colors, title } = useContext(ThemeContext);
+  const [incidents, setIncidents] = useState([]);
+
+  const ongId = localStorage.getItem("ongId");
+  const ongName = localStorage.getItem("ongName");
+
+  useEffect(() => {
+    api
+      .get("/profile", {
+        headers: {
+          Authorization: ongId
+        }
+      })
+      .then(({ data }) => setIncidents(data.incidents));
+  }, [ongId]);
+
+  async function handleDeleteIncident(id) {
+    try {
+      await api.delete(`/incidents/${id}`, {
+        headers: {
+          Authorization: ongId
+        }
+      });
+
+      setIncidents(incidents.filter(incident => incident.id !== id));
+    } catch (err) {
+      alert(`Não foi possível delete este caso. Tente novamente.`);
+    }
+  }
 
   return (
     <Container>
       <Header>
         <Logo src={logoImg} alt="Be The Hero" />
-        <Welcome>Bem vinda, APAD</Welcome>
+        <Welcome>Bem vinda, {ongName}</Welcome>
 
         <StyledLink className="button" to="/incidents/new">
           Cadastrar novo caso
@@ -51,8 +81,15 @@ export default function Profile({ toggleTheme }) {
       <IncidentsTitle>Casos encontrados</IncidentsTitle>
 
       <IncidentsUL>
-        {[1, 2, 3, 4].map(item => (
-          <Incident key={item} />
+        {incidents.map(incident => (
+          <Incident
+            key={incident.id}
+            id={incident.id}
+            title={incident.title}
+            description={incident.description}
+            value={incident.value}
+            deleteFn={handleDeleteIncident}
+          />
         ))}
       </IncidentsUL>
     </Container>
