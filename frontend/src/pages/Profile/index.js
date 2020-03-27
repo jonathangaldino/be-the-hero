@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { FiPower } from "react-icons/fi";
 import { ThemeContext } from "styled-components";
 import { shade } from "polished";
-import Switch from "react-switch";
 
 import {
   Container,
@@ -11,10 +10,13 @@ import {
   Welcome,
   StyledLink,
   Button,
-  StyledSwitch
+  StyledSwitch,
+  IncidentsTitle,
+  IncidentsUL
 } from "./styles";
 
 import logoImg from "../../assets/logo.svg";
+import Incident from "../../components/Incident";
 
 export default function Profile({ toggleTheme }) {
   const { colors, title } = useContext(ThemeContext);
@@ -45,6 +47,14 @@ export default function Profile({ toggleTheme }) {
           onColor={colors.secundary}
         />
       </Header>
+
+      <IncidentsTitle>Casos encontrados</IncidentsTitle>
+
+      <IncidentsUL>
+        {[1, 2, 3, 4].map(item => (
+          <Incident key={item} />
+        ))}
+      </IncidentsUL>
     </Container>
   );
 }

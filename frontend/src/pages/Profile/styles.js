@@ -46,3 +46,15 @@ export const Button = styled.button`
     border-color: #999;
   }
 `;
+
+export const IncidentsTitle = styled.h1`
+  margin-top: 80px;
+  margin-bottom: 24px;
+`;
+
+export const IncidentsUL = styled.ul`
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* or: repeat(2, 1fr); */
+  grid-gap: 24px;
+  list-style: none;
+`;
