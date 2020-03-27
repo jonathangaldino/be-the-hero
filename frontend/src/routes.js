@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Logon from "./pages/Logon";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
+import NewIncident from "./pages/NewIncident";
 
 export default function Routes({ toggleTheme }) {
   return (
@@ -15,6 +16,8 @@ export default function Routes({ toggleTheme }) {
           path="/profile"
           render={props => <Profile {...props} toggleTheme={toggleTheme} />}
         />
+
+        <Route path="/incidents/new" component={NewIncident} />
       </Switch>
     </BrowserRouter>
   );

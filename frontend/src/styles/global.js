@@ -33,6 +33,17 @@ export default createGlobalStyle`
     padding: 0 24px; 
   }
 
+  form textarea {
+    width: 100%;
+    min-height: 140px;
+    color: #333;
+    border: 1px solid #dcdce6;
+    border-radius: 8px;
+    padding: 15px 24px; 
+    line-height: 24px;
+    resize: vertical;
+  }
+
   .button {
     width: 100%;
     height: 60px;
