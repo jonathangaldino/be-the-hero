@@ -16,7 +16,8 @@ import {
   IncidentsUL
 } from "./styles";
 
-import logoImg from "../../assets/logo.svg";
+import logoLightImg from "../../assets/logoLight.svg";
+import logoDarkImg from "../../assets/logoDark.svg";
 import Incident from "../../components/Incident";
 
 import api from "../../services/api";
@@ -24,6 +25,8 @@ import api from "../../services/api";
 export default function Profile({ toggleTheme }) {
   const { colors, title } = useContext(ThemeContext);
   const [incidents, setIncidents] = useState([]);
+
+  const whichLogo = title === "light" ? logoLightImg : logoDarkImg;
 
   const ongId = localStorage.getItem("ongId");
   const ongName = localStorage.getItem("ongName");
@@ -65,7 +68,7 @@ export default function Profile({ toggleTheme }) {
   return (
     <Container>
       <Header>
-        <Logo src={logoImg} alt="Be The Hero" />
+        <Logo src={whichLogo} alt="Be The Hero" />
         <Welcome>Bem vinda, {ongName}</Welcome>
 
         <StyledLink className="button" to="/incidents/new">
