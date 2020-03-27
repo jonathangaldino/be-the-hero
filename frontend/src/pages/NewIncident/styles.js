@@ -30,6 +30,7 @@ export const Info = styled.section`
 export const InfoHeader = styled.h1`
   margin: 64px 0 32px;
   font-size: 32px;
+  color: ${props => props.theme.colors.incidentText};
 `;
 
 export const P = styled.p`
