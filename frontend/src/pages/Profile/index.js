@@ -28,6 +28,8 @@ export default function Profile({ toggleTheme }) {
   const ongId = localStorage.getItem("ongId");
   const ongName = localStorage.getItem("ongName");
 
+  useEffect(() => {}, []);
+
   const history = useHistory();
 
   useEffect(() => {

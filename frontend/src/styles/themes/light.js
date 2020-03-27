@@ -6,6 +6,8 @@ export default {
     secundary: "#D63AF9",
 
     background: "#f0f0f5",
-    text: "#000"
+    text: "#000",
+
+    incidentText: "#000"
   }
 };

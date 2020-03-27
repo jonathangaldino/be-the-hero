@@ -9,6 +9,10 @@ export const Container = styled.div`
   p + strong {
     margin-top: 32px;
   }
+
+  p {
+    color: ${props => props.theme.colors.incidentText};
+  }
 `;
 
 export const Delete = styled.button`
