@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { FiPower } from "react-icons/fi";
 import { ThemeContext } from "styled-components";
 import { shade } from "polished";
+import { useHistory } from "react-router-dom";
 
 import {
   Container,
@@ -27,6 +28,8 @@ export default function Profile({ toggleTheme }) {
   const ongId = localStorage.getItem("ongId");
   const ongName = localStorage.getItem("ongName");
 
+  const history = useHistory();
+
   useEffect(() => {
     api
       .get("/profile", {
@@ -51,6 +54,12 @@ export default function Profile({ toggleTheme }) {
     }
   }
 
+  function handleLogout() {
+    localStorage.clear();
+
+    history.push("/");
+  }
+
   return (
     <Container>
       <Header>
@@ -61,7 +70,7 @@ export default function Profile({ toggleTheme }) {
           Cadastrar novo caso
         </StyledLink>
 
-        <Button type="button">
+        <Button type="button" onClick={handleLogout}>
           <FiPower size={18} color="#E02041" />
         </Button>
 
