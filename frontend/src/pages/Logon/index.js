@@ -6,7 +6,6 @@ import { ThemeContext } from "styled-components";
 import { Container, Section, Form, FormHeader } from "./styles";
 
 import heroisImg from "../../assets/heroes.png";
-import logoImg from "../../assets/logo.svg";
 import logoLightImg from "../../assets/logoLight.svg";
 import logoDarkImg from "../../assets/logoDark.svg";
 
@@ -15,7 +14,7 @@ import api from "../../services/api";
 function Logon() {
   const [id, setId] = useState("");
   const inputId = useRef(null);
-  const { colors, title } = useContext(ThemeContext);
+  const { title } = useContext(ThemeContext);
 
   const history = useHistory();
 
