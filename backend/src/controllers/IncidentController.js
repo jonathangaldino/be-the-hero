@@ -29,7 +29,8 @@ module.exports = {
         "ongs.name",
         "ongs.email",
         "ongs.whatsapp",
-        "ongs.uf"
+        "ongs.uf",
+        "ongs.city"
       ]);
 
     res.header("X-Total-Count", count["count(*)"]);
